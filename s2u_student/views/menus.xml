@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="Student"
+                  id="menu_student"
+                  sequence="100"/>
+        
+        <menuitem id="menu_student_content"
+            name="Content"
+            sequence="10"
+            parent="s2u_student.menu_student"/>
+
+    </data>
+</openerp>
+

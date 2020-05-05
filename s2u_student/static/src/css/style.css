@@ -1,0 +1,29 @@
+.s2u_student_help {
+    font-size: smaller;
+}
+
+/* Custom page CSS */
+
+#progress-container {
+    -webkit-box-shadow: none;
+    box-shadow: inset none;
+    display:none;
+}
+
+#drop_zone {
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding-top: 60px;
+    text-align: center;
+    font: 20pt bold 'Helvetica';
+    color: #bbb;
+    height:140px;
+}
+
+#video-data {
+    margin-top: 1em;
+    font-size: 1.1em;
+    font-weight: 500;
+}

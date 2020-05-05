@@ -1,0 +1,488 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s2u_student
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-09 04:51+0000\n"
+"PO-Revision-Date: 2020-04-09 07:04+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: nl\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__tot_views
+msgid "# views"
+msgstr "# bekeken"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid "&amp;nbsp;0%"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_kanban_view
+msgid "<i class=\"fa fa-fw fa-eye\" role=\"img\" aria-label=\"Views\" title=\"Views\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-eye\" role=\"img\" aria-label=\"Gezien\" title=\"Gezien\"/>"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__group_ids
+msgid "Access for groups"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__user_ids
+msgid "Access for users"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__active
+msgid "Active"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning
+msgid "Add content"
+msgstr "Content toevoegen"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_content
+msgid "Back to e-Learning"
+msgstr "Terug naar e-Learning"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid "Browse&amp;hellip;"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_checksum
+msgid "Checksum/SHA1"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__company_id
+msgid "Company"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.ui.menu,name:s2u_student.menu_student_content
+msgid "Content"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_form
+msgid "Content Offline"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_project_task__s2u_content_id
+msgid "Content vimeo"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__create_uid
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__create_date
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__description
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_form
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__display_name
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__display_name
+msgid "Display Name"
+msgstr "Naam"
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__state__draft
+msgid "Draft"
+msgstr "Concept"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid "Drop Video Here"
+msgstr "Drop video hier"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_html
+msgid "Embedding"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid ""
+"Enter video name and description then drag your video file into the dotted area below "
+"or hit the button \"Browse\" to upload ..."
+msgstr ""
+"Voer een titel en omschrijving in en sleep je video naar het gestippelde gebied of "
+"klik de button \"Browse\" om een video te selecteren ..."
+
+#. module: s2u_student
+#. openerp-web
+#: code:addons/s2u_student/static/src/js/main.js:0
+#, python-format
+msgid "Error"
+msgstr "Fout"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_use_external_pull_link
+msgid "External pull"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_external_url
+msgid "External url"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_filename
+msgid "File Name"
+msgstr "Bestandsnaam"
+
+#. module: s2u_student
+#: model:ir.module.category,description:s2u_student.module_category_elearning
+msgid "Helps you handle your e-Learning needs."
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning
+msgid "Here you find all content provided by your teacher. Happy e-Learning!"
+msgstr ""
+"Hier vind je al het content wat door jouw golf professional beschikbaar is gesteld. "
+"Happy e-Learning!"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning
+msgid "Hit \"Add content\" if you want to add a video or create a new e-Learning page."
+msgstr ""
+"Klik \"Toevoegen content\" om een video toe te voegen of een nieuwe e-Learning pagina "
+"aan te maken. "
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__id
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__id
+msgid "ID"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo____last_update
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__write_uid
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__write_date
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_vimeo_services__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_search_view
+msgid "My content"
+msgstr "Mijn content"
+
+#. module: s2u_student
+#: code:addons/s2u_student/models/vimeo.py:0
+#, python-format
+msgid "No client key defined in config parameters (s2u_student.vimeo.client_key)!"
+msgstr ""
+
+#. module: s2u_student
+#: code:addons/s2u_student/models/vimeo.py:0
+#, python-format
+msgid "No client secret defined in config parameters (s2u_student.vimeo.client_secret)!"
+msgstr ""
+
+#. module: s2u_student
+#: code:addons/s2u_student/models/vimeo.py:0
+#, python-format
+msgid "No client token defined in config parameters (s2u_student.vimeo.client_token)!"
+msgstr ""
+
+#. module: s2u_student
+#: code:addons/s2u_student/models/student_content.py:0
+#, python-format
+msgid "No video present to publish!"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__state__offline
+msgid "Offline"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__page_url
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__content_type__page
+msgid "Page"
+msgstr "Pagina"
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__content_target__personal
+msgid "Personal"
+msgstr "Persoonlijk"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.not_found
+msgid ""
+"Please contact the website administrator when facing problems opening content in the "
+"e-learning."
+msgstr ""
+"Neem contact op met de webmaster wanneer u problemen heeft bij het openen van het "
+"content binnen de e-Learning."
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.no_access
+msgid ""
+"Please contact the website administrator why you are not granted for this content."
+msgstr ""
+"Neem contact op met de webmaster om uit te zoeken waarom u geen toegang heeft tot het "
+"content."
+
+#. module: s2u_student
+#. openerp-web
+#: code:addons/s2u_student/static/src/js/main.js:0
+#, python-format
+msgid "Please enter a description for this video."
+msgstr "Voer een omschrijving in voor de video."
+
+#. module: s2u_student
+#. openerp-web
+#: code:addons/s2u_student/static/src/js/main.js:0
+#, python-format
+msgid "Please enter a title for this video."
+msgstr "Voer een titel in voor de video."
+
+#. module: s2u_student
+#: code:addons/s2u_student/models/student_content.py:0
+#, python-format
+msgid "Please select a group or user who have access to this content!"
+msgstr "Selecteer een groep of gebruiker die toegang mogen hebben tot dit content!"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__project_id
+msgid "Project"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_form
+msgid "Publish Content"
+msgstr "Publiceer content"
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__state__publish
+msgid "Published"
+msgstr "Gepubliceerd"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_search_view
+msgid "Search"
+msgstr "Zoeken"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.not_found
+msgid "Sorry, the content you are requesting does not exists!"
+msgstr "Sorry, het content dat u probeert te openen bestaat niet!"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.no_access
+msgid "Sorry, you have no access for this content!"
+msgstr "Sorry, u heeft geen toegang tot dit content!"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__state
+msgid "State"
+msgstr "Status"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__student_id
+#: model:ir.ui.menu,name:s2u_student.menu_student
+#: model:res.groups,name:s2u_student.group_student
+msgid "Student"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.actions.act_window,name:s2u_student.action_student_content_vimeo
+#: model:ir.model,name:s2u_student.model_s2u_student_content_vimeo
+#: model:ir.ui.menu,name:s2u_student.menu_student_content_vimeo
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_form
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_tree
+msgid "Student Content Vimeo"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning
+msgid "Student e-Learning"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.actions.server,name:s2u_student.ir_cron_vimeo_synchronization_action_ir_actions_server
+#: model:ir.cron,cron_name:s2u_student.ir_cron_vimeo_synchronization_action
+#: model:ir.cron,name:s2u_student.ir_cron_vimeo_synchronization_action
+msgid "Synchronize with Vimeo"
+msgstr "Synchroniseer met Vimeo"
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__state__sync
+msgid "Synchronizing"
+msgstr "Synchroniseren"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__content_target
+msgid "Target"
+msgstr "Doel"
+
+#. module: s2u_student
+#: model:ir.model,name:s2u_student.model_project_task
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__task_id
+msgid "Task"
+msgstr "Taak"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__teacher_id
+#: model:res.groups,name:s2u_student.group_teacher
+msgid "Teacher"
+msgstr "Leraar"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__temp_url
+msgid "Temp. url"
+msgstr ""
+
+#. module: s2u_student
+#. openerp-web
+#: code:addons/s2u_student/static/src/js/main.js:0
+#, python-format
+msgid "The system needs some time to process the video before visible to your students."
+msgstr ""
+"De video wordt automatisch zichtbaar wanneer het systeem de video heeft verwerkt, dit "
+"kan enige tijd duren … Upload gerust nog een video ..."
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__name
+msgid "Title"
+msgstr "Titel"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__content_type
+msgid "Type"
+msgstr ""
+
+#. module: s2u_student
+#. openerp-web
+#: code:addons/s2u_student/static/src/js/main.js:0
+#, python-format
+msgid "Upload Successful"
+msgstr "Uploaden gelukt"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_uri
+msgid "Uri"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__vimeo_data
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__content_type__video
+msgid "Video"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid "Video description"
+msgstr "Video omschrijving"
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.student_content_vimeo_form
+msgid "Video iframe"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning_add_content
+msgid "Video name"
+msgstr "Video titel"
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_project_task__s2u_vimeo_embed
+msgid "Vimeo embed"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model.fields,field_description:s2u_student.field_s2u_student_content_vimeo__website_published
+msgid "Website published"
+msgstr ""
+
+#. module: s2u_student
+#: code:addons/s2u_student/controllers/main.py:0
+#, python-format
+msgid "You have no rights for this action."
+msgstr "U heeft geen rechten voor deze actie."
+
+#. module: s2u_student
+#: model:ir.model.fields.selection,name:s2u_student.selection__s2u_student_content_vimeo__content_target__elearning
+#: model:ir.module.category,name:s2u_student.module_category_elearning
+msgid "e-Learning"
+msgstr ""
+
+#. module: s2u_student
+#: model:ir.model,name:s2u_student.model_s2u_vimeo_services
+msgid "s2u.vimeo.services"
+msgstr ""
+
+#. module: s2u_student
+#: model_terms:ir.ui.view,arch_db:s2u_student.elearning
+msgid "views"
+msgstr "bekeken"

@@ -1,0 +1,189 @@
+<odoo>
+    <data>
+        <!-- Content -->
+        <record model="ir.ui.view" id="student_content_vimeo_search_view">
+            <field name="model">s2u.student.content.vimeo</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" />
+                    <field name="content_type" />
+                    <field name="content_target" />
+                    <field name="group_ids" />
+                    <field name="user_ids" />
+                    <field name="student_id" />
+                    <field name="state" />
+                    <field name="teacher_id" />
+                    <filter string="My content" name="my_content" domain="[('teacher_id', '=', uid)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="student_content_vimeo_form" model="ir.ui.view">
+            <field name="model">s2u.student.content.vimeo</field>
+            <field name="arch" type="xml">
+                <form string="Student Content Vimeo">
+                    <header>
+                        <button name="publish_content" type="object" string="Publish Content" class="oe_read_only oe_highlight" states="draft"/>
+                        <button name="unpublish_content" type="object" string="Content Offline" class="oe_read_only" states="publish"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,publish" />
+                    </header>
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_avatar" options='{"preview_image": "image_128"}' />
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="content_type" />
+                                <field name="content_target" />
+                                <field name="teacher_id" />
+                                <field name="page_url" attrs="{'invisible': [('content_type', '!=', 'page')],
+                                                               'required': [('content_type', '=', 'page')]}"/>
+                            </group>
+                            <group>
+                                <field name="vimeo_use_external_pull_link" attrs="{'invisible': [('content_type', '!=', 'video')],
+                                                                                   'required': [('content_type', '=', 'video')]}"/>
+                                <field name="vimeo_external_url" attrs="{'invisible': [('content_type', '!=', 'video')],
+                                                                                        'required': ['&amp;', ('content_type', '=', 'video'),
+                                                                                                              ('vimeo_use_external_pull_link', '=', True)]}"/>
+                                <field name="vimeo_data" filename="vimeo_filename" attrs="{'invisible': [('content_type', '!=', 'video')]}"/>
+                                <field name="vimeo_filename" invisible="1"/>
+                                <field name="vimeo_uri" readonly="1" attrs="{'invisible': [('content_type', '!=', 'video')]}"/>
+                                <field name="group_ids" widget="many2many_tags" options="{'no_create': True}" />
+                                <field name="user_ids" widget="many2many_tags" options="{'no_create': True}" />
+                                <field name="project_id" attrs="{'invisible': [('content_target', '!=', 'personal')],
+                                                                                'required': [('content_target', '=', 'personal')]}"
+                                       options="{'no_create': True}" />
+                                <field name="level" />
+                                <field name="stars" />
+                                <field name="content_type_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description" name="description">
+                                <field name="description" nolabel="1" />
+                            </page>
+                            <page string="Video iframe" name="iframe">
+                                <field name="vimeo_html" nolabel="1" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_content_vimeo_tree" model="ir.ui.view">
+            <field name="model">s2u.student.content.vimeo</field>
+            <field name="arch" type="xml">
+                <tree string="Student Content Vimeo">
+                    <field name="image_256" widget="image" />
+                    <field name="name" />
+                    <field name="content_type" />
+                    <field name="content_target" />
+                    <field name="group_ids" widget="many2many_tags" />
+                    <field name="user_ids" widget="many2many_tags" />
+                    <field name="student_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="student_content_vimeo_kanban_view">
+            <field name="model">s2u.student.content.vimeo</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="tot_views"/>
+                    <field name="state"/>
+                    <field name="image_128"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <t t-set="placeholder" t-value="'/base/static/img/company_image.png'"/>
+                                <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('s2u.student.content.vimeo', 'image_128', record.id.raw_value, placeholder)})" role="img"/>
+
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
+                                    <ul>
+                                        <li><field name="description"/></li>
+                                        <li t-if="record.state.raw_value != 'publish'"><field name="state"/></li>
+                                    </ul>
+                                    <div class="oe_kanban_partner_links">
+                                        <span t-if="record.tot_views.value>0" class="badge badge-pill"><i class="fa fa-fw fa-eye" role="img" aria-label="Views" title="Views"/><t t-esc="record.tot_views.value"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="action_student_content_vimeo" model="ir.actions.act_window">
+            <field name="name">Student Content Vimeo</field>
+            <field name="res_model">s2u.student.content.vimeo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_my_content': 1}</field>
+            <field name="view_id" ref="student_content_vimeo_kanban_view" />
+        </record>
+
+        <menuitem action="action_student_content_vimeo"
+                  id="menu_student_content_vimeo"
+                  parent="s2u_student.menu_student_content"
+                  sequence="10" />
+
+        <!-- Content Catergory -->
+        <record model="ir.ui.view" id="student_content_type_search_view">
+            <field name="model">s2u.student.content.type</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+
+        <record id="student_content_type_form" model="ir.ui.view">
+            <field name="model">s2u.student.content.type</field>
+            <field name="arch" type="xml">
+                <form string="Student Content Category">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_content_type_tree" model="ir.ui.view">
+            <field name="model">s2u.student.content.type</field>
+            <field name="arch" type="xml">
+                <tree string="Student Content Category">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_student_content_type" model="ir.actions.act_window">
+            <field name="name">Content Category</field>
+            <field name="res_model">s2u.student.content.type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="student_content_type_tree" />
+        </record>
+
+        <menuitem action="action_student_content_type"
+                  id="menu_student_content_type"
+                  parent="s2u_student.menu_student_content"
+                  sequence="20" />
+
+    </data>
+</odoo>

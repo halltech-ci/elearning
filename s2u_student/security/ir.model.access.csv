@@ -1,0 +1,6 @@
+"id","group_id:id","name","model_id","perm_create","perm_unlink","perm_write","perm_read"
+"r20200311001","base.group_user","Default","s2u.student.content.vimeo",1,1,1,1
+"r20200311002","s2u_student.group_teacher","Default","s2u.student.content.vimeo",1,1,1,1
+"r20200417001","base.group_user","Default","s2u.student.content.type",1,1,1,1
+"r20200417002","s2u_student.group_teacher","Default","s2u.student.content.type",1,1,1,1
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_layout" inherit_id="project.portal_my_task">
+        <xpath expr="//div[@t-if='task.description or task.attachment_ids']" position="after">
+            <div t-if="task.s2u_vimeo_embed" class="row">
+                <div class="col-12 col-lg-7 mb-4 mb-md-0">
+                    <span t-raw="task.s2u_vimeo_embed"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

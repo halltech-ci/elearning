@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="s2u_student.elearning_add_content" name="e-Learning Add Content">
+        <t t-call="website.layout">
+            <div class="container" id="s2u_student_upload">
+                <input type="hidden" id="accessToken" t-att-value="vimeo_token"/>
+                <p class="mt16">Enter video name and description then drag your video file into the dotted area below or hit the button "Browse" to upload ...</p>
+                <div id="progress-container" class="progress mt8 mb16">
+                    <div id="progress" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 0%">&amp;nbsp;0%
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="results"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                        <input type="text" name="name" id="videoName" class="form-control" placeholder="Video name" required="True" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="description" id="videoDescription" class="form-control" placeholder="Video description" required="True" />
+                    </div>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="videoTarget_all" name="videoTarget" value="all"/>
+                            <label class="custom-control-label" for="videoTarget_all">Content for all</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="videoTarget_student" name="videoTarget" value="student"/>
+                            <label class="custom-control-label" for="videoTarget_student">Task for student</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group field-select-student">
+                        <label for="student_id">Select student</label>
+                        <select name="student_id" class="form-control">
+                            <option value="">Select student ...</option>
+                            <t t-foreach="students or []" t-as="student">
+                                <option t-att-value="student.id"><t t-esc="student.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+
+                  </div>
+                  <div class="col-md-4">
+                    <div id="drop_zone">Drop Video Here</div>
+                    <br/>
+                    <label class="btn btn-block btn-info">
+                        Browse&amp;hellip; <input id="browse" type="file" style="display: none;" />
+                    </label>
+                  </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Index Topbar -->
+    <template id="s2u_student.index_topbar" name="Topbar">
+        <nav class="navbar navbar-light border-top shadow-sm d-print-none">
+            <div class="container">
+                <span class="navbar-brand h4 my-0 mr-4">Content</span>
+                <ul class="o_wevent_index_topbar_filters nav mr-n2"/>
+                <t t-call="s2u_student.content_search_box">
+                    <t t-set="_classes" t-value="'ml-auto pl-lg-3'"/>
+                    <t t-set="_searches" t-value="searches"/>
+                </t>
+            </div>
+        </nav>
+    </template>
+
+    <!-- Search Box -->
+    <template id="s2u_student.content_search_box" inherit_id="website.website_search_box" primary="True">
+        <xpath expr="//div[@role='search']" position="replace">
+            <form t-attf-class="o_wevent_event_searchbar_form o_wait_lazy_js my-1 my-lg-0 #{_classes}"
+                  t-att-action="action if action else '/student/elearning'" method="get">
+                <t t-set="search" t-value="search or _searches and _searches['search']"/>
+                <t>$0</t>
+                <t t-foreach="_searches" t-as="search">
+                    <input t-if="search != 'search' and search_value != 'all'" type="hidden"
+                        t-att-name="search" t-att-value="search_value"/>
+                </t>
+                <t t-raw="0"/>
+            </form>
+        </xpath>
+    </template>
+
+    <!-- Filter - Category -->
+    <template id="s2u_student.elearning_category" inherit_id="s2u_student.index_topbar" active="True" customize_show="True" name="Filter by Category">
+        <xpath expr="//ul[hasclass('o_wevent_index_topbar_filters')]" position="inside">
+            <li class="nav-item dropdown mr-2 my-1 my-lg-0">
+                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-folder-open"/>
+                    <t t-if="current_type" t-esc="current_type.name"/>
+                    <t t-else="">All Categories</t>
+                </a>
+                <div class="dropdown-menu">
+                    <t t-foreach="types" t-as="type">
+                        <t t-if="type['content_type_id']">
+                            <a t-att-href="keep('/student/elearning', type=type['content_type_id'][0])" t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{searches.get('type') == str(type['content_type_id'] and type['content_type_id'][0]) and 'active'}">
+                                <t t-esc="type['content_type_id'][1]"/>
+                                <span t-esc="type['content_type_id_count']" class="badge badge-pill badge-primary ml-3"/>
+                            </a>
+                        </t>
+                    </t>
+                </div>
+            </li>
+        </xpath>
+    </template>
+
+    <!-- Sorting -->
+    <template id="s2u_student.elearning_sorting" inherit_id="s2u_student.index_topbar" active="True" customize_show="True" name="Sort eLearning Content">
+        <xpath expr="//ul[hasclass('o_wevent_index_topbar_filters')]" position="inside">
+            <li class="nav-item dropdown mr-2 my-1 my-lg-0">
+                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-sort"/>
+                    <t t-if="current_sorting" t-esc="current_sorting['name']"/>
+                    <t t-else="" t-esc="sortings[0]['name']" />
+                </a>
+                <div class="dropdown-menu">
+                    <t t-foreach="sortings" t-as="sort">
+                        <a t-att-href="keep('/student/elearning', sorting=sort['id'])" t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{searches.get('sorting') == sort['id'] and 'active'}">
+                            <t t-esc="sort['name']"/>
+                        </a>
+                    </t>
+                </div>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="s2u_student.elearning" name="Student e-Learning">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <!-- Any content here (also able to use building blocks in here) -->
+                <div class="container">
+                    <h1 style="text-align: center;" class="o_default_snippet_text mt16">Student e-Learning</h1>
+                    <div class="col-lg-12 pt16 pb16">
+                        <p style="text-align: center;" class="o_default_snippet_text">Here you find all content provided by your teacher. Happy e-Learning!</p>
+                    </div>
+                </div>
+            </div>
+            <t t-if="is_teacher">
+                <div class="container bg-white">
+                    <a class="col-lg-12 pt16" style="text-align: center;" href="/student/elearning/add"><h3 class="card-title o_default_snippet_text">Add content</h3></a>
+                    <p class="col-lg-12 pb16" style="text-align: center;">Hit "Add content" if you want to add a video or create a new e-Learning page.</p>
+                </div>
+            </t>
+            <t t-call="s2u_student.index_topbar"/>
+            <section class="s_three_columns bg-200 pt32 pb32" data-name="Columns" id="elearning_content">
+                <div class="container">
+                    <div t-att-class="'row d-flex align-items-stretch' + (' js-grid' if is_teacher else '')">
+                        <t t-set="elearning_content_counter" t-value="1"/>
+                        <t t-foreach="content" t-as="c">
+                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16" t-att-id="'content_block_%d' % elearning_content_counter" t-att-data-record="c.id">
+                                <div class="card bg-white">
+                                    <div t-if="is_teacher">
+                                        <button class="btn btn-primary" t-att-id="'btn_edit_content_%d' % elearning_content_counter">Edit</button>
+                                        <button class="btn btn-primary d-none" t-att-id="'btn_save_content_%d' % elearning_content_counter">Save</button>
+                                        <button class="btn btn-primary d-none" t-att-id="'btn_cancel_content_%d' % elearning_content_counter">Cancel</button>
+                                        <button class="btn btn-danger" t-att-id="'btn_delete_content_%d' % elearning_content_counter">Delete</button>
+                                    </div>
+                                    <div style="position: relative;">
+                                        <img t-if="c.image_1920" t-att-alt="c.name" t-att-src="website.image_url(c, 'image_256')" class="card-img-top" />
+                                        <p style="position: absolute; top: 2px; right: 3px; background-color: rgba(255,255,255,255); padding-left: 5px; padding-right: 5px;"><span t-field="c.teacher_id.name" /></p>
+                                        <p style="position: absolute; top: 2px; left: 3px; background-color: rgba(255,255,255,255); padding-left: 5px; padding-right: 5px;"><span t-field="c.level" /></p>
+                                        <div t-if="c.stars == '3'" style="position: absolute; bottom: 2px; left: 3px; padding-left: 5px; padding-right: 5px; color:yellow;">
+                                            <i class="fa fa-star mr-1"/>
+                                            <i class="fa fa-star mr-1"/>
+                                            <i class="fa fa-star mr-1"/>
+                                        </div>
+                                        <div t-if="c.stars == '2'" style="position: absolute; bottom: 2px; left: 3px; padding-left: 5px; padding-right: 5px; color:yellow;">
+                                            <i class="fa fa-star mr-1"/>
+                                            <i class="fa fa-star mr-1"/>
+                                        </div>
+                                        <div t-if="c.stars == '1'" style="position: absolute; bottom: 2px; left: 3px; padding-left: 5px; padding-right: 5px; color:yellow;">
+                                            <i class="fa fa-star mr-1"/>
+                                        </div>
+                                        <img t-if="not c.user_has_access()" class="card-img-top" style="position:absolute; top: 0px; left: 0px;" src="/s2u_student/static/src/img/secret.png" />
+                                    </div>
+                                    <div t-if="c.content_type == 'video'" class="card-body">
+                                        <div t-if="is_teacher">
+                                            <form role="form" action="#" t-att-id="'form_content_%d' % elearning_content_counter" class="d-none">
+                                                <input type="hidden" t-att-id="'content_record_%d' % elearning_content_counter" t-att-value="c.id" />
+                                                <input type="text" class="form-control" t-att-id="'content_title_%d' % elearning_content_counter" t-att-value="c.name" required="True"/>
+                                                <select t-att-id="'content_type_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option t-att-value="0">-</option>
+                                                    <t t-foreach="content_types or []" t-as="type">
+                                                        <option t-att-value="type.id" t-att-selected="type == c.content_type_id"><t t-esc="type.name"/></option>
+                                                    </t>
+                                                </select>
+                                                <select t-att-id="'content_level_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option value="100" t-att-selected="'100' == c.level">hcp 54 - 36 or higher</option>
+                                                    <option value="200" t-att-selected="'200' == c.level">hcp 36 - 24 or higher</option>
+                                                    <option value="300" t-att-selected="'300' == c.level">hcp 24 - 12 or higher</option>
+                                                    <option value="400" t-att-selected="'400' == c.level">hcp 12 - 0</option>
+                                                </select>
+                                                <select t-att-id="'content_stars_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option value="0" t-att-selected="'0' == c.stars">zero or more stars</option>
+                                                    <option value="1" t-att-selected="'1' == c.stars">1 or more stars</option>
+                                                    <option value="2" t-att-selected="'2' == c.stars">2 or more stars</option>
+                                                    <option value="3" t-att-selected="'3' == c.stars">3 stars</option>
+                                                </select>
+                                                <textarea class="form-control" t-att-id="'content_descript_%d' % elearning_content_counter" rows="3"><t t-esc="c.description"/></textarea>
+                                            </form>
+                                            <div t-att-id="'div_content_%d' % elearning_content_counter">
+                                                <a t-att-href="'/student/elearning/vimeo/%d' % c.id"><h3 class="card-title o_default_snippet_text"><span t-field="c.name" t-att-id="'show_content_title_%d' % elearning_content_counter"/></h3></a>
+                                                <p class="card-text o_default_snippet_text"><span t-field="c.description" t-att-id="'show_content_descript_%d' % elearning_content_counter" /></p>
+                                            </div>
+                                        </div>
+                                        <div t-elif="c.user_has_access()">
+                                            <a t-att-href="'/student/elearning/vimeo/%d' % c.id"><h3 class="card-title o_default_snippet_text"><span t-field="c.name" /></h3></a>
+                                            <p class="card-text o_default_snippet_text"><span t-field="c.description" /></p>
+                                        </div>
+                                        <div t-else="">
+                                            <h3 class="card-title o_default_snippet_text"><span t-field="c.name" /></h3>
+                                            <p class="card-text o_default_snippet_text"><span t-field="c.description" /></p>
+                                        </div>
+                                    </div>
+                                    <div t-if="c.content_type == 'page'" class="card-body">
+                                        <div t-if="is_teacher">
+                                            <form role="form" action="#" t-att-id="'form_content_%d' % elearning_content_counter" class="d-none">
+                                                <input type="hidden" t-att-id="'content_record_%d' % elearning_content_counter" t-att-value="c.id" />
+                                                <input type="text" class="form-control" t-att-id="'content_title_%d' % elearning_content_counter" t-att-value="c.name" required="True"/>
+                                                <select t-att-id="'content_type_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option t-att-value="0">-</option>
+                                                    <t t-foreach="content_types or []" t-as="type">
+                                                        <option t-att-value="type.id" t-att-selected="type == c.content_type_id"><t t-esc="type.name"/></option>
+                                                    </t>
+                                                </select>
+                                                <select t-att-id="'content_level_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option value="100" t-att-selected="'100' == c.level">hcp 54 - 36 or higher</option>
+                                                    <option value="200" t-att-selected="'200' == c.level">hcp 36 - 24 or higher</option>
+                                                    <option value="300" t-att-selected="'300' == c.level">hcp 24 - 12 or higher</option>
+                                                    <option value="400" t-att-selected="'400' == c.level">hcp 12 - 0</option>
+                                                </select>
+                                                <select t-att-id="'content_stars_%d' % elearning_content_counter" required="True" class="form-control">
+                                                    <option value="0" t-att-selected="'0' == c.stars">zero or more stars</option>
+                                                    <option value="1" t-att-selected="'1' == c.stars">1 or more stars</option>
+                                                    <option value="2" t-att-selected="'2' == c.stars">2 or more stars</option>
+                                                    <option value="3" t-att-selected="'3' == c.stars">3 stars</option>
+                                                </select>
+                                                <textarea class="form-control" t-att-id="'content_descript_%d' % elearning_content_counter" rows="3"><t t-esc="c.description"/></textarea>
+                                            </form>
+                                            <div t-att-id="'div_content_%d' % elearning_content_counter">
+                                                <a t-att-href="'/student/elearning/other/%d' % c.id"><h3 class="card-title o_default_snippet_text"><span t-field="c.name" t-att-id="'show_content_title_%d' % elearning_content_counter"/></h3></a>
+                                                <p class="card-text o_default_snippet_text"><span t-field="c.description" t-att-id="'show_content_descript_%d' % elearning_content_counter" /></p>
+                                            </div>
+                                        </div>
+                                        <div t-elif="c.user_has_access()">
+                                            <a t-att-href="'/student/elearning/other/%d' % c.id"><h3 class="card-title o_default_snippet_text"><span t-field="c.name" /></h3></a>
+                                            <p class="card-text o_default_snippet_text"><span t-field="c.description" /></p>
+                                        </div>
+                                        <div t-else="">
+                                            <h3 class="card-title o_default_snippet_text"><span t-field="c.name" /></h3>
+                                            <p class="card-text o_default_snippet_text"><span t-field="c.description" /></p>
+                                        </div>
+                                    </div>
+                                    <div t-if="c.tot_views" class="card-footer">
+                                        <i class="fa fa-info-circle mr-1"/>
+                                        <small class="o_default_snippet_text"><span t-field="c.tot_views" /> views</small>
+                                        <small class="o_default_snippet_text pull-right"><span t-field="c.create_date" /></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-set="elearning_content_counter" t-value="elearning_content_counter + 1"/>
+                        </t>
+                    </div>
+                    <!-- Pager -->
+                    <div t-if="not is_teacher" class="form-inline justify-content-center my-3">
+                        <t t-call="website.pager"/>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="s2u_student.no_access">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <div class="container">
+                    <h1 class="mt32">Sorry, you have no access for this content!</h1>
+                    <p>Please contact the website administrator why you are not granted for this content.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="s2u_student.not_found">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <div class="container">
+                    <h1 class="mt32">Sorry, the content you are requesting does not exists!</h1>
+                    <p>Please contact the website administrator when facing problems opening content in the e-learning.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="s2u_student.elearning_content" name="Student e-Learning Content">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <!-- Any content here (also able to use building blocks in here) -->
+                <div class="container">
+                    <h1 style="text-align: center;" class="o_default_snippet_text mt16"><span t-field="content.name" /></h1>
+                    <div class="col-lg-12 pt16 pb16">
+                        <p style="text-align: center;" class="o_default_snippet_text"><span t-field="content.description" /></p>
+                    </div>
+                    <div class="col-lg-12 pt16 pb16 text-center">
+                        <span t-raw="content.vimeo_html"/>
+                    </div>
+                    <div class="col-lg-12 pt16 pb16 text-center">
+                        <a href="#" onclick="history.go(-1)">Back to e-Learning</a>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

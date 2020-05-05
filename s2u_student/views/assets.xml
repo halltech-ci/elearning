@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="vimeo_upload" name="Vimeo Upload" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/css" href="/s2u_student/static/src/css/style.css"/>
+            <script type="text/javascript" src="/s2u_student/static/src/js/vimeo-upload.js" />
+            <script type="text/javascript" src="/s2u_student/static/src/js/html5sortable.js" />
+            <script type="text/javascript" src="/s2u_student/static/src/js/main.js" />
+        </xpath>
+    </template>
+</odoo>

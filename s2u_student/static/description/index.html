@@ -1,0 +1,73 @@
+<section class="oe_container">
+    <div class="row">    
+        <h2 class="col-md-12" style="color:#875A7B;">Teacher Student Content</h2>
+	</div>
+	<div class="row">    
+        <h3 class="col-md-12">share your videos on a secure way with your students or people you want. Provide it as a e-learning page or as a 1 on 1 lesson (private lesson).</h3>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="row">        
+        <div class="col-md-12">
+			<h2>You need Vimeo!</h2>
+			<p>To work with this module you need a pro Vimeo account (or higher)</p>
+        </div>
+    </div>
+	<div class="row mt32">
+	    <div class="col-md-12">
+            <h2>Register App in Vimeo</h2>		
+		    <p class="mt8">In Vimeo you need to register your app.</p>
+			<p class="mt8">Scopes you must enable: Public, Private, Create, Edit, Delete, Interact and Upload. The scope "Upload" you need to request by Vimeo, it takes some days before this scope is reviewed by Vimeo and released ...</p>
+			<p class="mt8">Go to <a href="https://developer.vimeo.com/apps">Vimeo developer</a> to register your app.</p>
+			<p class="mt8">You need the following keys in your Odoo System parameters:</p>
+			<ul class="mt16">
+				<li>s2u_student.vimeo.client_token</li>
+				<li>s2u_student.vimeo.client_folder (optional)</li>			
+				<li>s2u_student.vimeo.whitelist_domain (optional)</li>
+			</ul>
+			<p class="mt8">The Token you get from the app you created in Vimeo. The Folder is optional, when set all videos you add in Odoo are uploaded in this folder. This way you can organize your content when you are sharing your Vimeo account over multiple Odoo instances.</p>
+			<p class="mt8">For using a Folder, create a folder first in vimeo and open it. In the url you see something like this: https://vimeo.com/manage/folders/1495089</p>
+			<p class="mt8">You need to use the id on the end (1495089) as value for s2u_student.vimeo.client_folder<p>
+			<p class="mt8"><strong>Important: use domain for whitelist</strong><p>
+			<p>Set the key "whitelist_domain" with the domain your are hosting your Odoo environment. This way videos can only be played from this domain. If your are not setting this key,'localhost' is used by default.</p>						
+		</div>
+	</div>		    
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <p>In the Student module you can add new content. Give it a title, description and define which groups/users (portal) have access to this content. When target is "e-Learning" then the content is accesable over the url "/student/elearning". When target is "Personal", you need to select a single student and a predefined Project. For this video a new task is created and is accesable in the portal account of the Student. The teacher and student can use the Odoo chatter for communicating about this task.</p>
+		    <img src="screen01.png" class="img-fluid">            
+		</div>
+	</div>		    
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <p>When all data is entered correctly and you selected your video to share, save and hit the button "Publish content". Odoo will now push the content to vimeo. Our module is using the "pull" method from Vimeo, meaning Vimeo will request the video over a specific url our module is providing to Vimeo. Therefore it is important your are running this module on a system accessable over the internet.</p>
+			<p>As soon Vimeo has pulled the video, the state changes from "Synchronizing" into "Published". Also a cover image is provided automatically when you did not provide one in the first place.
+		    <img src="screen02.png" class="img-fluid">            
+		</div>
+	</div>
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <img src="screen03.png" class="img-fluid">            
+		</div>
+	</div>
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <img src="screen04.png" class="img-fluid">            
+		</div>
+	</div>
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <p>Visit your content over the url "/student/elearning" to see if everything is working correctly.</p>
+		    <img src="screen05.png" class="img-fluid">            
+		</div>
+	</div>
+	<div class="row mt32">
+	    <div class="col-md-12">
+		    <h2>Please contact us if you have any questions or when you need assistance. We are happy to help you!</h2>		    
+		</div>
+	</div>
+</section>
+
+<section class="oe_container oe_separator">
+</section>
