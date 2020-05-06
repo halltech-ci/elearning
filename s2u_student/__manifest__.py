@@ -22,15 +22,15 @@
         """,
     'depends': ['base', 'website', 'project'],
     'data': [
-        'security/res_groups.xml',
-        'security/rules.xml',
-        'security/ir.model.access.csv',
-        'views/assets.xml',
-        'views/menus.xml',
-        'views/student_view.xml',
-        'views/website_templates.xml',
-        'views_inherited/project_portal_templates.xml',
-        'data/crons.xml'
+        #'security/res_groups.xml',
+        #'security/rules.xml',
+        #'security/ir.model.access.csv',
+        #'views/assets.xml',
+        #'views/menus.xml',
+        #'views/student_view.xml',
+        #'views/website_templates.xml',
+        #'views_inherited/project_portal_templates.xml',
+        #'data/crons.xml'
     ],
     'qweb': [
     ],
